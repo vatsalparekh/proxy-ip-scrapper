@@ -7,16 +7,16 @@ A scrapper for scrapping Proxy-IP list from different websites
 ```json
 [
 {
- 'ip': '1.2.3.4',
- 'time-last-updated': '141232232', 
- 'country(if available): 'IND',
- 'health': 'something'
+"ip": "1.2.3.4",
+"time-last-updated": "141232232", 
+"country(if available)": "IND",
+"health": "something"
 }
 {
- 'ip': '5.6.7.8',
- 'time-last-updated': '141243232', 
- 'country(if available): 'USA',
- 'health': 'something'
+ "ip": "5.6.7.8",
+ "time-last-updated": "141243232", 
+ "country(if available)": "USA",
+ "health": "something"
 }
 ]
 ```
