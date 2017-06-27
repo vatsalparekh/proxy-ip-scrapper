@@ -55,3 +55,23 @@
 
 NOTE : Admin Links(Edit, Delete, Create) can only access by Admin User. 	
      : Here, IP address is primary key field.
+
+
+
+########################################################################
+FOR RUNNING BACKENDS CELERY TASKS:
+
+1 ) Run Rabbitmq Server 
+
+2 ) Run Celery Worker 
+
+3 ) Run Celery beat
+
+4 ) Run Localhost server
+
+
+
+
+
+
+
