@@ -7,7 +7,6 @@ from home.models import IPdata
 
 from selenium import webdriver
 from bs4 import BeautifulSoup
-#from datetime import datetime
 import time, re
 
 
@@ -42,7 +41,7 @@ logger = get_task_logger(__name__)
 
 @periodic_task(
     run_every=(crontab(minute='*/3')),
-    name="scraping data and pushing to csv file",
+    name="scraping data and pushing to database",
     ignore_result=True)
 def main():
     url_index = 0
@@ -129,19 +128,12 @@ def parse(browser, url_index):
 
 
 def call_browser(url_index):
-
-    ###################################################################
-    #if you have added chromedriver to environment variables then do not pass any
-    #argument to in webdriver.Chrome()
-    #and if not added then pass the path where it is installed
-
-    browser = webdriver.Chrome('C:\Program Files\chromedriver.exe')
+    
+    browser = webdriver.Chrome()
 
     browser.get(urls[url_index])
     data = parse(browser, url_index)
 
-    #with open(r'D:\Projects\final_project\index.csv', 'a') as csv_file:
-    #    writer = csv.writer(csv_file)
     extract_data(data, url_index)
 
     page_index = 2
