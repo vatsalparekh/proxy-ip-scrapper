@@ -6,12 +6,11 @@ from django.conf import settings
 
 class Config:
     # Config class which include all configurations for celery
-
-    BROKER_URL = 'amqp://guest:guest@localhost:5672//'
-    CELERY_RESULT_BACKEND = 'amqp://guest:guest@localhost:5672//'
+    CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
     CELERY_ACCEPT_CONTENT = ['application/json']
     CELERY_TASK_SERIALIZER = 'json'
     CELERY_RESULT_SERIALIZER = 'json'
+    CELERY_RESULT_BACKEND = 'django-db'
 
 
 # Set default configuration module name
@@ -25,7 +24,7 @@ app = Celery('proxy_ip_scrapper')
 # Any configuration that was previously set will be reset,
 # when this method is called
 # So additional configuration should be written after this method
-app.config_from_object(Config)
+app.config_from_object(Config, namespace='CELERY')
 
 # To find tasks.py file from apps
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
